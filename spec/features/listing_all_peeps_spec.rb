@@ -3,20 +3,16 @@ require 'spec_helper'
 feature "User browses the list of peeps" do
 
   before(:each) {
-    Peep.create(name: 'Sanda',
-                  user_handle: 'pianogrl',
+    Peep.create(
                   message: "Hello world",
                   hashtags: [Hashtag.first_or_create(:text => "code")])
-    Peep.create(name: 'Sanda',
-                  user_handle: 'pianogrl',
+    Peep.create(
                   message: "Go to code",
                   hashtags: [Hashtag.first_or_create(:text => "code")])
-    Peep.create(name: 'Sam',
-                  user_handle: 'tansaku',
+    Peep.create(
                   message: "I say makers",
                   hashtags: [Hashtag.first_or_create(:text => "makers")])
-    Peep.create(name: 'Jair',
-                  user_handle: 'codeguy',
+    Peep.create(
                   message: "I'm starting a new world",
                   hashtags: [Hashtag.first_or_create(:text => 'world')])
   }
