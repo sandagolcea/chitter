@@ -41,7 +41,8 @@ class Chitter < Sinatra::Base
     maker = Maker.create(:name => params[:name],
               :user_name => params[:user_name],
               :email => params[:email],
-              :password => params[:password])
+              :password => params[:password],
+              :password_confirmation => params[:password_confirmation])
     session[:maker_id] = maker.id
     redirect to('/')
   end
