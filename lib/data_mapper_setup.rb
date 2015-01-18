@@ -14,4 +14,4 @@ DataMapper.finalize
 
 # However, the database tables don't exist yet. Let's tell datamapper to create them
 # DataMapper.auto_upgrade!
-DataMapper.auto_migrate!
+# DataMapper.auto_migrate!
