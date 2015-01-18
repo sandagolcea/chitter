@@ -1,8 +1,10 @@
 require 'sinatra/base'
+require_relative 'data_mapper_setup'
 
 class Chitter < Sinatra::Base
-  require 'data_mapper_setup'
+
   get '/' do
+    @peeps = Peep.all
     erb :index
   end
 

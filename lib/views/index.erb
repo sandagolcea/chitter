@@ -5,6 +5,10 @@
   <title>Chitter</title>
 </head>
 <body>
-  Welcome to Chitter!
+  <ul>
+  <% @peeps.each do |peep| %>
+    <li><%= peep.message %></li>
+  <% end %>
+  </ul>
 </body>
 </html>
