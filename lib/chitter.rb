@@ -52,7 +52,7 @@ class Chitter < Sinatra::Base
       session[:maker_id] = @maker.id
       redirect to('/')
     else
-      flash[:notice] = "Sorry, your passwords don't match"
+      flash.now[:errors] = @maker.errors.full_messages
       erb :"maker/new"
     end
 
