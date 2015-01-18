@@ -10,5 +10,15 @@
     <li><%= peep.message %></li>
   <% end %>
   </ul>
+
+  <div id="new-peep">
+  <form action="/peeps" method="post">
+    Name: <input type="text" name="name">
+    User Handle: <input type="text" name="user_handle">
+    Message: <input type="text" name="message">
+    <input type="submit" value="Add peep">
+  </form>
+</div>
+
 </body>
 </html>
