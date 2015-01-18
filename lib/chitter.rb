@@ -22,6 +22,12 @@ class Chitter < Sinatra::Base
     redirect to('/')
   end
 
+  get '/hashtags/:text' do
+  hashtag = Hashtag.first(:text => params[:text])
+  @peeps = hashtag ? hashtag.peeps : []
+  erb :index
+end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
