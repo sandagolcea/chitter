@@ -12,7 +12,13 @@ class Chitter < Sinatra::Base
     name = params["name"]
     user_handle = params["user_handle"]
     message = params["message"]
-    Peep.create(:name => name, :user_handle => user_handle, :message => message)
+
+    hashtags = params["hashtags"].split(" ").map do |hashtag|
+      Hashtag.first_or_create(:text => hashtag)
+    end
+    
+    Peep.create(:name => name, :user_handle => user_handle, :message => message, :hashtags => hashtags)
+
     redirect to('/')
   end
 
