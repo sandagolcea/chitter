@@ -14,7 +14,8 @@ class Chitter < Sinatra::Base
 
 
   get '/' do
-    @peeps = Peep.all
+    @peeps = Peep.all(:order => [:created_at.desc] )
+    # @zoos_by_tiger_count = Zoo.all(:order => [ :tiger_count.desc ])
     erb :index
   end
 

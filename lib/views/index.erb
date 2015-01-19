@@ -1,8 +1,10 @@
 
   <ul>
   <% @peeps.each do |peep| %>
-      <li><%= peep.maker.name %></li>
-    <li><%= peep.message %></li>
+      <li><%= peep.message %><br>
+          <%= peep.maker.name %>
+          <%= peep.created_at %>
+      </li>
   <% end %>
   </ul>
   
