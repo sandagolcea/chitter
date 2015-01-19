@@ -1,15 +1,20 @@
 
   <ul>
   <% @peeps.each do |peep| %>
+      <li><%= peep.maker.name %></li>
     <li><%= peep.message %></li>
   <% end %>
   </ul>
-
-  <div id="new-peep">
-  <form action="/peeps" method="post">
-    Message: <input type="text" name="message">
-    Hashtags: <input type="text" name="hashtags">
-    <input type="submit" value="Add peep">
-  </form>
+  
+  <% if current_maker %>
+    <div id="new-peep">
+    <form action="/peeps" method="post">
+      Message: <input type="text" name="message">
+      Hashtags: <input type="text" name="hashtags">
+      <input type="submit" value="Add peep">
+    </form>
+  <%else%>
+    <a href='/makers/new'>Sign up!</a>
+  <% end %>
 </div>
 

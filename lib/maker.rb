@@ -8,6 +8,8 @@ class Maker
   attr_reader :password
   attr_accessor :password_confirmation
 
+  has n, :peeps
+
   property :id,     Serial 
   property :name,  String
   property :user_name,  String, :unique => true, :message => "This user name is already taken"

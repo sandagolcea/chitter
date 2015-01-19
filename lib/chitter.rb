@@ -25,9 +25,9 @@ class Chitter < Sinatra::Base
       Hashtag.first_or_create(:text => hashtag)
     end
     
-    Peep.create(:message => message, :hashtags => hashtags)
+    Peep.create(:message => message, :hashtags => hashtags, :maker => current_maker)
 
-    redirect to('/')
+    redirect '/'
   end
 
   get '/hashtags/:text' do
@@ -37,8 +37,12 @@ class Chitter < Sinatra::Base
   end
 
   get '/makers/new' do
-    @maker = Maker.new
-    erb :"/maker/new"
+    if current_maker
+      redirect '/'
+    else
+      @maker = Maker.new
+      erb :"/maker/new"
+    end
   end
 
   post '/makers' do
@@ -51,7 +55,7 @@ class Chitter < Sinatra::Base
 
     if @maker.save
       session[:maker_id] = @maker.id
-      redirect to('/')
+      redirect '/'
     else
       flash.now[:errors] = @maker.errors.full_messages
       erb :"maker/new"
@@ -60,7 +64,11 @@ class Chitter < Sinatra::Base
   end
 
   get '/sessions/new' do
-    erb :"sessions/new"
+    if current_maker
+      redirect '/'
+    else
+      erb :"sessions/new"
+    end
   end
 
   post '/sessions' do
@@ -68,7 +76,7 @@ class Chitter < Sinatra::Base
     maker = Maker.authenticate(email, password)
     if maker
       session[:maker_id] = maker.id
-      redirect to('/')
+      redirect '/'
     else
       flash[:errors] = ["The email or password is incorrect"]
       erb :"sessions/new"
