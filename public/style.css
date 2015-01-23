@@ -1,0 +1,18 @@
+form {
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-family: Verdana;
+  color: #2C3E50;
+  text-align: center;
+}
+
+body {
+  font-family: Futura;
+  font-size: 23px;
+  margin: 0 auto;
+  width: 80%; 
+  background-color: #03C9A9;
+}
